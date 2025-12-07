@@ -63,7 +63,7 @@ class HealthResponse(BaseModel):
 
 
 def load_model_and_tokenizer():
-    """Load the trained model and tokenizer from disk"""
+    """Load the trained model and tokenizer from disk or Hugging Face Hub"""
     global model, tokenizer
     
     if model is not None and tokenizer is not None:
@@ -71,13 +71,22 @@ def load_model_and_tokenizer():
     
     try:
         model_path = MODEL_DIR
-        if not os.path.exists(model_path):
-            raise FileNotFoundError(f"Model directory not found: {model_path}")
         
-        print(f"Loading tokenizer from {model_path}...")
+        # Check if it's a local path (exists on filesystem) or Hugging Face Hub ID
+        is_local = os.path.exists(model_path) and os.path.isdir(model_path)
+        
+        if is_local:
+            print(f"Loading tokenizer from local path: {model_path}...")
+        else:
+            print(f"Loading tokenizer from Hugging Face Hub: {model_path}...")
+        
         tokenizer = AutoTokenizer.from_pretrained(model_path)
         
-        print(f"Loading model from {model_path}...")
+        if is_local:
+            print(f"Loading model from local path: {model_path}...")
+        else:
+            print(f"Loading model from Hugging Face Hub: {model_path}...")
+        
         model = AutoModelForSequenceClassification.from_pretrained(model_path)
         model.to(DEVICE)
         model.eval()
