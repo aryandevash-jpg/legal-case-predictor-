@@ -24,7 +24,8 @@ app = FastAPI(
 )
 
 # Configuration
-MODEL_DIR = os.getenv("MODEL_DIR", os.path.join("content", "ljp_legalbert_model"))
+# Use Hugging Face Hub model ID or local path
+MODEL_DIR = os.getenv("MODEL_DIR", "AryanJangde/legal-case-predictor-model")
 MAX_LENGTH = 512
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
