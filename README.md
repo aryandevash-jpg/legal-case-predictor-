@@ -317,11 +317,11 @@ This project is licensed under the MIT License.
 - GitHub: [@aryandevash-jpg](https://github.com/aryandevash-jpg)
 - Model: [AryanJangde/legal-case-predictor-model](https://huggingface.co/AryanJangde/legal-case-predictor-model)
 
-**Mahi**
+**Mahendra Parihar**
 
 - GitHub: [@Mahi0606](https://github.com/Mahi0606)
 
-**Prabhat**
+**Prabhat Kumar**
 
 - GitHub: [@prabhat1530](https://github.com/prabhat1530)
 
